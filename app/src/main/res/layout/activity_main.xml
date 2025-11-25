@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:background="#121212"
+        android:padding="24dp">
+        tools:context=".MainActivity"
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ANC Nativo"
+        android:textColor="#22d3ee"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Processamento Oboe Low-Latency"
+        android:textColor="#888888"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Área Visual -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVisualizer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="#1e1e1e"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMPLITUDE MONITOR"
+            android:textColor="#555"
+            android:textSize="10sp"
+            android:layout_margin="12dp"/>
+
+        <!-- Linha que pulsa (Adicionado ID) -->
+        <View
+            android:id="@+id/viewWaveLine"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#22d3ee"
+            android:layout_gravity="center"
+            android:alpha="0.8"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botão Principal -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnToggle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="ATIVAR MICROFONE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        android:backgroundTint="#0891b2"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/cardVisualizer"/>
+
+    <!-- Painel de Controles -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_panel"
+        android:padding="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btnToggle">
+
+        <!-- Controle de Inversão -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Inverter Fase (180°)"
+                android:textColor="#e0e0e0"
+                android:textSize="14sp"/>
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switchPhase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textOn=""
+                android:textOff=""
+                app:showText="false"
+                app:thumbTint="#22d3ee"
+                app:trackTint="#333"/>
+        </LinearLayout>
+
+        <!-- Controle de Ganho -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:text="Ganho (Volume)"
+                    android:textColor="#888"
+                    android:textSize="12sp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvGainVal"
+                    android:text="1.0"
+                    android:textColor="#22d3ee"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarGain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:progress="100"
+                android:progressTint="#22d3ee"
+                android:thumbTint="#22d3ee"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
